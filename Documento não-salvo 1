@@ -1,0 +1,71 @@
+create database BTN;
+use BTN;
+create table cliente(
+id_cliente int not null auto_increment,
+nome varchar(100),
+sexo char(1),
+data_nascimento date,
+cpf char (15),
+primary key (id_cliente) 
+);
+
+desc cliente;
+select * from cliente;
+ 
+ create table endereco(
+ id_endereco int not null auto_increment,
+ cod_cliente int, 
+ pais varchar (24),
+ cidade varchar (28),
+ rua varchar (53),
+ estado varchar (13),
+ nume_casa char (9),
+ primary key(id_endereco)
+ );
+ 
+alter table endereco add foreign
+key(cod_cliente) references
+cliente(id_cliente); 
+ 
+ drop table endereco;
+ desc endereco;
+ 
+ create table telefone(
+ id_telefone int not null auto_increment,
+ cod_cliente int, 
+ tele_fixo varchar (12),
+ cll varchar (11),
+ primary key (id_telefone)
+ ); 
+ 
+ alter table telefone add foreign
+key(cod_cliente) references
+cliente(id_cliente); 
+ 
+ drop table telefone; 
+ desc telefone;
+ 
+ 
+ 
+ 
+ 
+insert into cliente (nome, sexo, data_nascimento, cpf)
+values("joaquim","M", "1989-03-26","06830983794");
+
+select * from cliente;
+ 
+ 
+ 
+insert into endereco (cod_cliente, pais, cidade, rua, estado, nume_casa)
+values("1","Japão","tokyo","sakura","shibuya","12");
+ 
+ select * from endereco;
+ 
+ 
+ insert into telefone (cod_cliente, tele_fixo, cll)
+ values ("5","4768-8267","9837-2384");
+ 
+ select * from telefone; 
+ 
+ 
+ 
